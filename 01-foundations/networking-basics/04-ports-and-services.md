@@ -154,10 +154,10 @@ In reality, risk depends on the service, its configuration, authentication contr
 
 Consider an external server exposing the following ports:
 
-22/tcp    SSH
-80/tcp    HTTP
-443/tcp   HTTPS
-445/tcp   SMB
+22/tcp    SSH  
+80/tcp    HTTP  
+443/tcp   HTTPS  
+445/tcp   SMB  
 
 An attacker may:
 
