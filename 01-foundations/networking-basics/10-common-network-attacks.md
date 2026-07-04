@@ -1,6 +1,6 @@
-## Common Network Attacks (Security Perspective)
+# Common Network Attacks (Security Perspective)
 
-### Introduction
+## Introduction
 
 Network attacks target the communication mechanisms that enable systems to exchange information. Rather than exploiting a single vulnerability, attackers often abuse weaknesses in network protocols, trust relationships, and insecure configurations to gain visibility, intercept traffic, expand access, or disrupt services.
 
@@ -27,7 +27,7 @@ Unlike application attacks, network attacks often affect multiple systems simult
 
 ---
 
-### Man-in-the-Middle (MITM)
+## Man-in-the-Middle (MITM)
 
 ### Overview
 
@@ -45,9 +45,9 @@ MITM attacks often rely on weaknesses in lower-layer protocols rather than softw
 
 ---
 
-###ARP Spoofing
+## ARP Spoofing
 
-Overview
+### Overview
 
 ARP Spoofing exploits the lack of authentication in the Address Resolution Protocol (ARP).
 
@@ -65,9 +65,9 @@ ARP spoofing is one of the most common techniques used during internal penetrati
 
 ---
 
-DNS Spoofing
+## DNS Spoofing
 
-Overview
+### Overview
 
 DNS Spoofing manipulates DNS responses so that victims resolve legitimate domain names to attacker-controlled IP addresses.
 
@@ -83,9 +83,9 @@ Typical Impact
 
 ---
 
-Packet Sniffing
+## Packet Sniffing
 
-Overview
+### Overview
 
 Packet sniffing involves capturing network traffic for analysis.
 
@@ -104,9 +104,9 @@ The value of packet sniffing depends largely on whether sensitive communications
 
 ---
 
-Session Hijacking
+## Session Hijacking
 
-Overview
+### Overview
 
 Many applications maintain authenticated user sessions after successful login.
 
@@ -123,9 +123,9 @@ Session hijacking often follows credential interception or application-layer wea
 
 ---
 
-Replay Attacks
+## Replay Attacks
 
-Overview
+### Overview
 
 Replay attacks occur when previously captured legitimate communications are retransmitted in an attempt to gain unauthorized access or repeat an authenticated action.
 
@@ -142,9 +142,9 @@ Modern authentication protocols reduce replay risks through timestamps, nonces, 
 
 ---
 
-Denial of Service (DoS)
+## Denial of Service (DoS)
 
-Overview
+### Overview
 
 Denial of Service attacks attempt to make systems or services unavailable by exhausting available resources.
 
@@ -162,9 +162,9 @@ Unlike most network attacks, DoS attacks focus on availability rather than unaut
 
 ---
 
-Port Scanning
+## Port Scanning
 
-Overview
+### Overview
 
 Port scanning is a reconnaissance technique used to identify accessible services on target systems.
 
@@ -182,7 +182,7 @@ The information gathered during scanning guides every subsequent phase of a pene
 
 ---
 
-Attack Chain Perspective
+## Attack Chain Perspective
 
 Network attacks rarely occur in isolation.
 
@@ -218,7 +218,7 @@ Each technique contributes to a larger attack chain rather than serving as the f
 
 ---
 
-Defensive Perspective
+## Defensive Perspective
 
 Organizations reduce the risk of network attacks through layered security controls, including:
 
@@ -235,7 +235,7 @@ No single control prevents every network attack; effective defense relies on mul
 
 ---
 
-Common Misconceptions
+## Common Misconceptions
 
 Several misconceptions frequently arise:
 
@@ -248,7 +248,7 @@ In reality, attackers often combine multiple network techniques with application
 
 ---
 
-Key Takeaways
+## Key Takeaways
 
 - Network attacks exploit weaknesses in communication protocols, trust relationships, and network configurations.
 - Most successful compromises involve multiple techniques rather than a single attack.
