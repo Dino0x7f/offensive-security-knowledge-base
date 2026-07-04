@@ -13,6 +13,7 @@ The focus is placed on developing analytical thinking rather than memorizing com
 Every topic follows the same learning cycle.
 
 Understand
+
       ↓
 Study
       ↓
