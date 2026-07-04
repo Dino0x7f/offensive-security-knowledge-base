@@ -43,10 +43,10 @@ Instead of treating every host as part of one large network, it can be divided i
 
 #### Example:
 
-192.168.1.0/26      User Workstations
-192.168.1.64/26     Application Servers
-192.168.1.128/26    Administrative Systems
-192.168.1.192/26    Infrastructure Devices
+192.168.1.0/26      User Workstations  
+192.168.1.64/26     Application Servers  
+192.168.1.128/26    Administrative Systems  
+192.168.1.192/26    Infrastructure Devices  
 
 Each subnet becomes an independent broadcast domain with its own routing and access control policies.
 
@@ -191,10 +191,10 @@ In practice, subnetting must be combined with proper routing policies, firewall 
 
 Consider an organization with the following design:
 
-Users -------------------- 192.168.10.0/24
-Servers ------------------ 192.168.20.0/24
-Domain Controllers ------- 192.168.30.0/24
-Management Network ------- 192.168.40.0/24
+Users -------------------- 192.168.10.0/24  
+Servers ------------------ 192.168.20.0/24  
+Domain Controllers ------- 192.168.30.0/24  
+Management Network ------- 192.168.40.0/24  
 
 If a workstation within the Users subnet is compromised, properly configured firewalls can prevent direct communication with Domain Controllers and management systems.
 
