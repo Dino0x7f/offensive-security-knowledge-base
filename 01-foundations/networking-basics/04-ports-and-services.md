@@ -44,20 +44,20 @@ An open port does not necessarily indicate a vulnerability, but it does indicate
 
 ## Common Ports and Their Security Relevance
 
-Port| Service| Offensive Security Relevance
-20/21| FTP| Anonymous access, weak authentication, cleartext credentials
-22| SSH| Brute-force attacks, weak keys, outdated SSH implementations
-23| Telnet| Plaintext communication, credential interception
-25| SMTP| Open relay abuse, user enumeration, phishing infrastructure
-53| DNS| Zone transfers, DNS poisoning, information disclosure
-80| HTTP| Web application vulnerabilities, directory enumeration
-110| POP3| Plaintext credential exposure, mail enumeration
-143| IMAP| Email authentication weaknesses
-389| LDAP| Active Directory enumeration, anonymous queries
-443| HTTPS| Secure web applications, API testing, TLS assessment
-445| SMB| File sharing abuse, NTLM attacks, lateral movement
-3389| RDP| Remote access compromise, credential attacks
-5985/5986| WinRM| Remote administration abuse, PowerShell remoting
+Port| Service| Offensive Security Relevance  
+20/21| FTP| Anonymous access, weak authentication, cleartext credentials  
+22| SSH| Brute-force attacks, weak keys, outdated SSH implementations  
+23| Telnet| Plaintext communication, credential interception  
+25| SMTP| Open relay abuse, user enumeration, phishing infrastructure  
+53| DNS| Zone transfers, DNS poisoning, information disclosure  
+80| HTTP| Web application vulnerabilities, directory enumeration  
+110| POP3| Plaintext credential exposure, mail enumeration  
+143| IMAP| Email authentication weaknesses  
+389| LDAP| Active Directory enumeration, anonymous queries  
+443| HTTPS| Secure web applications, API testing, TLS assessment   
+445| SMB| File sharing abuse, NTLM attacks, lateral movement  
+3389| RDP| Remote access compromise, credential attacks  
+5985/5986| WinRM| Remote administration abuse, PowerShell remoting  
 
 These ports are among the most frequently encountered during penetration tests and often provide valuable attack opportunities.
 
