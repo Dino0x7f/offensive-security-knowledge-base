@@ -1,6 +1,6 @@
-#Tools Covered
+# Tools Covered
 
-###Purpose
+### Purpose
 
 This document provides an overview of the security tools studied throughout this repository.
 
@@ -8,7 +8,7 @@ The objective is not to memorize tool usage, but to understand when, why, and ho
 
 ---
 
-###Reconnaissance
+### Reconnaissance
 
 Tools commonly used for information gathering and target discovery.
 
@@ -24,7 +24,7 @@ Tools commonly used for information gathering and target discovery.
 
 ---
 
-###Web Application Security
+### Web Application Security
 
 Tools used during web application assessments.
 
@@ -38,7 +38,7 @@ Tools used during web application assessments.
 
 ---
 
-###Network Assessment
+### Network Assessment
 
 Tools used for network enumeration and validation.
 
@@ -50,7 +50,7 @@ Tools used for network enumeration and validation.
 
 ---
 
-###Active Directory
+### Active Directory
 
 Tools used to analyze enterprise identity environments.
 
@@ -64,7 +64,7 @@ Tools used to analyze enterprise identity environments.
 
 ---
 
-###Password Auditing
+### Password Auditing
 
 Tools related to credential auditing and password security.
 
@@ -75,7 +75,7 @@ Tools related to credential auditing and password security.
 
 ---
 
-###Exploitation Frameworks
+### Exploitation Frameworks
 
 General-purpose frameworks used during authorized security testing.
 
@@ -84,7 +84,7 @@ General-purpose frameworks used during authorized security testing.
 
 ---
 
-###Reporting and Documentation
+### Reporting and Documentation
 
 Tools used for documenting findings and producing assessment reports.
 
@@ -96,18 +96,18 @@ Tools used for documenting findings and producing assessment reports.
 
 ---
 
-###Automation
+### Automation
 
 Tools and technologies used to automate repetitive tasks.
 
 - Bash
 - PowerShell
 - Python
-- C language
+- C language 
 
 ---
 
-###Tool Selection Philosophy
+### Tool Selection Philosophy
 
 Tools are selected according to the assessment objective rather than personal preference.
 
@@ -122,6 +122,6 @@ Tools support the assessment process, but they do not replace technical understa
 
 ---
 
-###Continuous Updates
+### Continuous Updates
 
 The list of covered tools will continue to evolve as new technologies are studied and additional practical experience is gained.
