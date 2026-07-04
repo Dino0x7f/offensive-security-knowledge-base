@@ -12,19 +12,19 @@ The focus is placed on developing analytical thinking rather than memorizing com
 
 Every topic follows the same learning cycle.
 
-Understand
-      ↓
-Study
-      ↓
-Practice
-      ↓
-Analyze
-      ↓
-Document
-      ↓
-Review
-      ↓
-Improve
+Understand  
+      ↓  
+Study  
+      ↓  
+Practice  
+      ↓  
+Analyze  
+      ↓  
+Document  
+      ↓  
+Review  
+      ↓  
+Improve  
 
 
 Each phase reinforces the previous one and contributes to long-term knowledge retention.
