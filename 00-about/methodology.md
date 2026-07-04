@@ -11,9 +11,9 @@ The focus is placed on developing analytical thinking rather than memorizing com
 ### Core Methodology
 
 Every topic follows the same learning cycle.
+'''
 
 Understand
-
       ↓
 Study
       ↓
@@ -26,6 +26,7 @@ Document
 Review
       ↓
 Improve
+'''
 
 Each phase reinforces the previous one and contributes to long-term knowledge retention.
 
