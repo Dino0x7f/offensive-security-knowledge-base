@@ -78,4 +78,4 @@ Successful attacks usually result from:
 
 ## Key Takeaway
 
-> Web security is not about blocking requests—it is about controlling how untrusted input is processed, authenticated, authorized, and transformed into application behavior.
+> Web security is not about blocking requests, it is about controlling how untrusted input is processed, authenticated, authorized, and transformed into application behavior.
