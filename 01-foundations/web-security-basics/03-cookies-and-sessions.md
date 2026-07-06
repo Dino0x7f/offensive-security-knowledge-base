@@ -1,338 +1,246 @@
-# HTTP Methods & Headers (Security Perspective)
+# Cookies and Sessions (Security Perspective)
 
-## Introduction
+## Overview
 
-HTTP methods and headers define how clients and servers communicate during every web request.
+HTTP is a stateless protocol, meaning each request is independent and the server does not automatically remember previous interactions.
+
+To maintain user authentication and application state, web applications rely on **cookies** and **sessions**.
 
 From a security perspective:
 
-> Every HTTP request is a collection of user-controlled information that may influence application behavior, authentication, authorization, caching, routing, and logging.
-
-Understanding how HTTP methods and headers work is essential because many web vulnerabilities originate from improper request handling rather than flaws in the underlying protocol.
+> Session management is one of the most critical components of web application security because possession of a valid session often equals possession of the user's identity.
 
 ---
 
-# HTTP Request Structure
+# Cookies
 
-A typical HTTP request consists of:
+## What is a Cookie?
 
-- Request Method
-- Target URL
-- HTTP Version
-- Headers
-- Optional Request Body
+A cookie is a small piece of data stored by the client's browser and automatically included in subsequent HTTP requests to the same domain.
 
-Example:
+Cookies may store:
 
-```
-POST /login HTTP/1.1
-Host: example.com
-Cookie: session=abc123
-Content-Type: application/json
+- Session identifiers
+- User preferences
+- Authentication tokens
+- Tracking information
 
-{
-    "username":"alice",
-    "password":"password"
-}
-```
-
-Every part of this request may become an attack vector.
+Cookies are stored client-side and should never contain sensitive information in plaintext.
 
 ---
 
-# HTTP Methods
+## Types of Cookies
 
-## GET
+### Session Cookies
 
-Purpose:
-
-- Retrieve resources
-
-Characteristics:
-
-- Safe
-- Idempotent
-- Usually cacheable
-
-Security considerations:
-
-- Sensitive information in URLs
-- Information disclosure
-- Parameter manipulation
-- Forced browsing
+- Stored in memory
+- Deleted when the browser closes
+- Commonly used for authenticated sessions
 
 ---
 
-## POST
+### Persistent Cookies
 
-Purpose:
-
-- Submit data to the server
-
-Common uses:
-
-- Login forms
-- Registration
-- API requests
-- File uploads
-
-Security considerations:
-
-- Input validation
-- CSRF
-- SQL Injection
-- Business logic abuse
+- Stored on disk
+- Remain until expiration
+- Used for "Remember Me" functionality
 
 ---
 
-## PUT
+### First-Party Cookies
 
-Purpose:
-
-- Replace an existing resource
-
-Security considerations:
-
-- Unauthorized modification
-- File upload abuse
-- Missing authorization checks
+Created by the visited website.
 
 ---
 
-## PATCH
+### Third-Party Cookies
 
-Purpose:
-
-- Partially update a resource
-
-Security considerations:
-
-- Parameter tampering
-- Broken access control
+Created by external services (analytics, advertisements, tracking).
 
 ---
 
-## DELETE
+# Sessions
 
-Purpose:
+## What is a Session?
 
-- Remove resources
+A session is a server-side mechanism used to maintain user state after successful authentication.
 
-Security considerations:
-
-- Broken authorization
-- Object ownership validation
-- IDOR vulnerabilities
+Instead of storing authentication data in the browser, the server stores session information internally and associates it with a unique **Session ID**.
 
 ---
 
-## OPTIONS
+## Typical Authentication Flow
 
-Purpose:
-
-- Discover supported HTTP methods
-
-Security considerations:
-
-- Information disclosure
-- CORS enumeration
-
----
-
-## HEAD
-
-Purpose:
-
-- Retrieve headers only
-
-Security considerations:
-
-- Resource enumeration
-- Cache behavior analysis
+1. User submits credentials
+2. Server validates credentials
+3. Server creates a session
+4. Server generates a random Session ID
+5. Session ID is returned as a cookie
+6. Browser automatically includes the cookie in future requests
+7. Server validates the Session ID on every request
 
 ---
 
-# HTTP Headers
+## Session Lifecycle
 
-Headers provide metadata about requests and responses.
+A secure session should:
 
-Although they appear simple, many influence authentication, routing, caching, and security decisions.
-
----
-
-## Authorization
-
-Purpose:
-
-Carries authentication credentials.
-
-Examples:
-
-- Bearer Tokens
-- Basic Authentication
-- API Keys
-
-Security risks:
-
-- Token leakage
-- Missing validation
-- Token reuse
+- Be generated using cryptographically secure randomness
+- Expire after inactivity
+- Expire after logout
+- Be regenerated after authentication
+- Be invalidated when privileges change
 
 ---
 
-## Cookie
+# Cookie Security Attributes
 
-Purpose:
+## Secure
 
-Stores session identifiers and application state.
+Only sends the cookie over HTTPS connections.
 
-Security risks:
+Protects against network interception.
 
-- Session hijacking
-- Session fixation
+---
+
+## HttpOnly
+
+Prevents JavaScript from accessing cookies.
+
+Mitigates cookie theft through XSS.
+
+---
+
+## SameSite
+
+Controls whether cookies are sent with cross-site requests.
+
+Values:
+
+- Strict
+- Lax
+- None
+
+Helps mitigate CSRF attacks.
+
+---
+
+## Domain
+
+Specifies which domains may receive the cookie.
+
+Improper configuration may expose cookies to subdomains.
+
+---
+
+## Path
+
+Limits where the cookie is sent within the application.
+
+Restricting the path reduces unnecessary exposure.
+
+---
+
+# Common Session Attacks
+
+## 1. Session Hijacking
+
+Attacker steals a valid session identifier.
+
+Methods include:
+
+- XSS
+- MITM
+- Malware
+- Browser compromise
+
+Impact:
+
+- Complete account takeover
+
+---
+
+## 2. Session Fixation
+
+Attacker forces the victim to authenticate using a known Session ID.
+
+If the application fails to regenerate the session after login, the attacker can reuse it.
+
+---
+
+## 3. Cookie Theft
+
+Cookies may be stolen through:
+
+- Cross-Site Scripting (XSS)
+- Browser malware
+- Physical access
+- Network interception (without HTTPS)
+
+---
+
+## 4. Session Prediction
+
+Weak random number generation allows attackers to guess Session IDs.
+
+Modern frameworks typically prevent this.
+
+---
+
+## 5. Session Replay
+
+Previously captured session tokens are reused to impersonate users.
+
+---
+
+# Common Session Management Weaknesses
+
+- Predictable Session IDs
 - Missing Secure flag
 - Missing HttpOnly flag
-- Missing SameSite attribute
-
----
-
-## Host
-
-Purpose:
-
-Identifies the destination host.
-
-Security risks:
-
-- Host Header Injection
-- Password reset poisoning
-- Cache poisoning
-- SSRF assistance
-
----
-
-## Referer
-
-Purpose:
-
-Indicates the previous page.
-
-Security risks:
-
-- Sensitive information leakage
-- Internal URL disclosure
-
----
-
-## User-Agent
-
-Purpose:
-
-Identifies the client software.
-
-Security risks:
-
-- Fingerprinting
-- Filter bypass
-- Log poisoning
-
----
-
-## X-Forwarded-For
-
-Purpose:
-
-Communicates the original client IP when proxies are used.
-
-Security risks:
-
-- IP spoofing
-- Authentication bypass
-- Rate limit bypass
-- Logging manipulation
-
----
-
-## Origin
-
-Purpose:
-
-Identifies the origin of cross-origin requests.
-
-Security risks:
-
-- CORS misconfiguration
-- CSRF validation bypass
-
----
-
-## Content-Type
-
-Purpose:
-
-Describes the format of transmitted data.
-
-Security risks:
-
-- Content-Type confusion
-- Deserialization attacks
-- File upload bypasses
-
----
-
-## Accept
-
-Purpose:
-
-Specifies acceptable response formats.
-
-Security considerations:
-
-- API content negotiation
-- Unexpected parser behavior
-
----
-
-# Common Security Misconfigurations
-
-Pentesters frequently discover:
-
-- Dangerous HTTP methods enabled
-- Missing security headers
-- Host header trust
-- Weak cookie attributes
-- Improper proxy configuration
-- Sensitive headers disclosed
-- Inconsistent authentication between methods
+- Missing SameSite protection
+- Sessions never expire
+- Session not invalidated after logout
+- Session ID not regenerated after login
+- Session identifiers exposed in URLs
 
 ---
 
 # Pentester Perspective
 
-During an assessment, HTTP methods and headers are manipulated to identify:
+During web assessments, pentesters evaluate:
 
-- Hidden functionality
-- Authentication weaknesses
-- Authorization bypasses
-- Session handling flaws
-- Reverse proxy misconfigurations
-- Cache poisoning opportunities
-- Request smuggling prerequisites
-- Business logic flaws
+- Session generation quality
+- Cookie attributes
+- Session timeout behavior
+- Logout functionality
+- Session fixation resistance
+- Session invalidation
+- Cross-user session isolation
+- Token entropy
 
-Rather than treating headers as metadata, pentesters consider them user-controlled input that may alter application behavior.
+Typical questions include:
+
+- Can another user reuse this session?
+- Can the Session ID be predicted?
+- Does logout actually invalidate the session?
+- Are cookies protected against XSS and CSRF?
 
 ---
 
-# Key Takeaways
+# Defensive Best Practices
 
-- HTTP methods define the requested action.
-- HTTP headers provide contextual information that often influences server-side decisions.
-- Every request component should be considered untrusted input.
-- Incorrect handling of methods or headers frequently results in authentication, authorization, or routing vulnerabilities.
+- Use HTTPS everywhere
+- Enable Secure and HttpOnly
+- Configure SameSite appropriately
+- Regenerate Session IDs after authentication
+- Implement idle and absolute session timeouts
+- Invalidate sessions on logout
+- Store only minimal information in cookies
+- Use cryptographically secure random Session IDs
 
 ---
 
 # Key Insight
 
-> Successful web attacks rarely depend on manipulating a single parameter. They often begin by understanding how HTTP methods, headers, and server-side logic interact to process every request.
+> Authentication verifies identity once. Sessions preserve that identity. If an attacker obtains a valid session token, authentication becomes irrelevant.
