@@ -1,4 +1,4 @@
-# Security Identifiers (SID) (Security Perspective)
+# Security Identifiers (SID) 
 
 ## Overview
 
