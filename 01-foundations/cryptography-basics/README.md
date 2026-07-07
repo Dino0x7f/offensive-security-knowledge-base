@@ -79,4 +79,4 @@ Most real-world compromises occur because of:
 
 ## Key Takeaway
 
-> Cryptography is not about hiding data—it is about establishing confidentiality, integrity, authenticity, and trust. In offensive security, attackers target how cryptography is implemented, not the mathematics behind it.
+> Cryptography is not about hiding data, it is about establishing confidentiality, integrity, authenticity, and trust. In offensive security, attackers target how cryptography is implemented, not the mathematics behind it.
