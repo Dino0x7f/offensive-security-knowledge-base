@@ -4,7 +4,7 @@
 
 A **DLL (Dynamic Link Library)** is a file containing reusable code and data that multiple programs can share during execution.
 
-Unlike an executable (`.exe`), a DLL cannot run by itself—it must be loaded by another process.
+Unlike an executable (`.exe`), a DLL cannot run by itself, it must be loaded by another process.
 
 From a security perspective:
 
