@@ -6,7 +6,7 @@ Active Directory (AD) is Microsoft's centralized directory service for managing 
 
 From a security perspective:
 
-> Active Directory is not just a directory service—it is the trust infrastructure of a Windows enterprise. Compromising Active Directory often means compromising the entire organization.
+> Active Directory is not just a directory service it is the trust infrastructure of a Windows enterprise. Compromising Active Directory often means compromising the entire organization.
 
 Understanding Active Directory is fundamental for:
 
