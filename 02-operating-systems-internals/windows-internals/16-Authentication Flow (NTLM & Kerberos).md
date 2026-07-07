@@ -1,4 +1,4 @@
-# Authentication Flow (NTLM & Kerberos) (Windows Internals - Security Perspective)
+# Authentication Flow (NTLM & Kerberos) 
 
 ## Overview
 
