@@ -8,7 +8,7 @@ While a process provides the resources (memory, handles, security context), **th
 
 From a security perspective:
 
-> Attackers rarely target the process itself—they target the threads that execute code inside it.
+> Attackers rarely target the process itself they target the threads that execute code inside it.
 
 Understanding threads is fundamental for learning process injection, malware execution, scheduling, and many Windows internals.
 
