@@ -1,4 +1,4 @@
-# Active Directory Database (NTDS.dit) (Security Perspective)
+# Active Directory Database (NTDS.dit) 
 
 ## Overview
 
