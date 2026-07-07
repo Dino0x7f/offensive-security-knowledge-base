@@ -578,4 +578,4 @@ The Memory Manager coordinates translation, protection, and allocation of virtua
 
 # Key Insight
 
-> Virtual Memory is more than a memory management feature—it is one of Windows' primary security boundaries. It isolates processes, enforces memory protections, and underpins modern exploit mitigations. Understanding Virtual Memory is essential for both exploit development and defensive detection.
+> Virtual Memory is more than a memory management feature it is one of Windows' primary security boundaries. It isolates processes, enforces memory protections, and underpins modern exploit mitigations. Understanding Virtual Memory is essential for both exploit development and defensive detection.
