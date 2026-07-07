@@ -1,4 +1,4 @@
-# Active Directory Replication (Security Perspective)
+# Active Directory Replication 
 
 ## Overview
 
@@ -6,7 +6,7 @@
 
 From a security perspective:
 
-> Replication is the mechanism that keeps Active Directory synchronized. Because replication transfers sensitive directory data—including password hashes it is one of the most security-critical operations in an enterprise.
+> Replication is the mechanism that keeps Active Directory synchronized. Because replication transfers sensitive directory data including password hashes it is one of the most security-critical operations in an enterprise.
 
 Understanding replication is essential for:
 
