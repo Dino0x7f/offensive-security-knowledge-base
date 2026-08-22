@@ -1,0 +1,307 @@
+# SQL Injection
+
+## Overview
+
+SQL Injection (SQLi) is a vulnerability that occurs when untrusted user input is incorporated into SQL queries without proper validation or parameterization. An attacker can manipulate the intended SQL statement, causing the database to execute unintended commands.
+
+SQL Injection is one of the most impactful web vulnerabilities because it directly targets the application's data layer. Successful exploitation may lead to authentication bypass, information disclosure, privilege escalation, arbitrary data modification, and, in some cases, remote code execution.
+
+Although modern frameworks provide protection mechanisms such as prepared statements, SQL Injection continues to appear due to insecure coding practices, legacy applications, and improper use of database APIs.
+
+---
+
+# How SQL Injection Works
+
+Most web applications interact with relational databases.
+
+Typical flow:
+
+```
+User Input
+
+↓
+
+Application
+
+↓
+
+SQL Query
+
+↓
+
+Database
+
+↓
+
+Response
+```
+
+If user input is concatenated directly into the SQL query, an attacker may alter the query's logic.
+
+---
+
+## Example
+
+Instead of generating:
+
+```sql
+SELECT * FROM users
+WHERE username='alice'
+AND password='password';
+```
+
+An attacker may inject SQL syntax:
+
+```text
+' OR '1'='1
+```
+
+Resulting query:
+
+```sql
+SELECT * FROM users
+WHERE username=''
+OR '1'='1';
+```
+
+The injected condition changes the logic of the original query.
+
+---
+
+# Root Cause
+
+SQL Injection is caused by improper construction of SQL statements.
+
+Common causes include:
+
+- Dynamic SQL concatenation
+- Lack of parameterized queries
+- Insufficient input validation
+- Unsafe ORM usage
+- Stored procedures using dynamic SQL
+- Poor escaping mechanisms
+
+The underlying weakness is **improper separation between user input and SQL commands**.
+
+---
+
+# Attack Surface
+
+SQL Injection commonly appears anywhere user-controlled data reaches a database query.
+
+Typical entry points include:
+
+- Login forms
+- Search fields
+- URL parameters
+- POST requests
+- Cookies
+- HTTP Headers
+- API parameters
+- JSON bodies
+- XML requests
+
+---
+
+# Common Targets
+
+SQL Injection affects applications using relational databases such as:
+
+- MySQL
+- PostgreSQL
+- Microsoft SQL Server
+- Oracle
+- MariaDB
+- SQLite
+
+---
+
+# Types of SQL Injection
+
+SQL Injection is commonly divided into several categories.
+
+## In-Band SQL Injection
+
+The attacker receives results through the same communication channel.
+
+Includes:
+
+- Error-Based SQL Injection
+- UNION-Based SQL Injection
+
+---
+
+## Blind SQL Injection
+
+The application does not return database errors or query results directly.
+
+Information is inferred through:
+
+- Boolean responses
+- Application behavior
+- Time delays
+
+Includes:
+
+- Boolean-Based Blind SQLi
+- Time-Based Blind SQLi
+
+---
+
+## Out-of-Band SQL Injection
+
+Results are transmitted through a separate communication channel.
+
+Examples include:
+
+- DNS
+- HTTP callbacks
+
+This type is less common but useful when normal responses are unavailable.
+
+---
+
+# Potential Impact
+
+Successful SQL Injection may allow attackers to:
+
+- Bypass authentication
+- Read sensitive data
+- Modify database records
+- Delete information
+- Execute administrative functions
+- Enumerate database structure
+- Escalate privileges
+- Access application secrets
+- Chain into Remote Code Execution (depending on the DBMS)
+
+---
+
+# Common Indicators
+
+Possible signs include:
+
+- Unexpected SQL error messages
+- Authentication bypass
+- Database-related exceptions
+- Different application responses to crafted input
+- Abnormal query execution times
+- Database-specific error pages
+
+---
+
+# Mitigation
+
+The primary defense against SQL Injection is separating SQL code from user input.
+
+Recommended mitigations include:
+
+- Prepared Statements
+- Parameterized Queries
+- Safe ORM Practices
+- Allow-list Input Validation
+- Least Privilege Database Accounts
+- Secure Error Handling
+- Stored Procedures (when implemented securely)
+- Web Application Firewalls (WAF) as an additional control
+
+Input filtering alone is **not** a reliable defense.
+
+---
+
+# Detection Methods
+
+Security professionals identify SQL Injection using:
+
+- Manual Testing
+- Source Code Review
+- Dynamic Application Security Testing (DAST)
+- Static Application Security Testing (SAST)
+- Interactive Application Security Testing (IAST)
+- Fuzzing
+- Automated Vulnerability Scanners
+
+---
+
+# Relationship to Other Vulnerabilities
+
+SQL Injection often serves as an entry point for broader attacks.
+
+Possible attack chain:
+
+```
+SQL Injection
+
+↓
+
+Database Access
+
+↓
+
+Credential Extraction
+
+↓
+
+Authentication Bypass
+
+↓
+
+Privilege Escalation
+
+↓
+
+System Compromise
+```
+
+---
+
+# Real-World Examples
+
+Well-known incidents involving SQL Injection have resulted in:
+
+- Large-scale credential theft
+- Financial data exposure
+- Customer database compromise
+- Administrative account takeover
+- Regulatory compliance violations
+
+Despite being well understood, SQL Injection remains one of the most frequently reported web vulnerabilities.
+
+---
+
+# Importance in Offensive Security
+
+Understanding SQL Injection enables penetration testers to:
+
+- Assess database security
+- Identify insecure query construction
+- Evaluate input handling
+- Demonstrate business impact
+- Build realistic attack chains
+- Recommend effective mitigations
+
+---
+
+## Prerequisites
+
+Before studying SQL Injection, you should understand:
+
+- HTTP Fundamentals
+- Web Application Architecture
+- Relational Databases
+- SQL Basics
+- Vulnerability Fundamentals
+
+---
+
+## Next Step
+
+Continue with:
+
+**01-nosql-injection.md**
+
+This chapter explores NoSQL Injection, its differences from traditional SQL Injection, affected databases, exploitation techniques, and mitigation strategies.
+
+---
+
+> **Key Insight:** SQL Injection is fundamentally a failure to separate data from commands. When applications treat user input as executable SQL instead of untrusted data, attackers can manipulate database logic and compromise the application's most valuable asset its data.
